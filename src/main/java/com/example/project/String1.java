@@ -8,31 +8,52 @@ public class String1 {
 	   size = -1;
 	   str = new char[80];
 	}
+
 	public void append(char c) {
         str[++size] = c;
     }
+
     public char remove() {
         return str[size--];
     }
+
     public char getChar(int i) {
         return str[i];
     }
+
     public int length() {
-        return size+1;
+        return size + 1;
     }
-    public void makeEmpty()
-    {
+
+    public void makeEmpty() {
         size = -1;
     }
-    public void concat(String1 s)
-    {
-        for(int i = 0; i < s.length(); i++)
+
+    public void concat(String1 s) {
+        for(int i = 0; i < s.length(); i++) {
             append(s.getChar(i));
+        }
     }
+
+    // Implement equal function
     public boolean equal(String1 s) {
-        throw new UnsupportedOperationException("equal() function is not supported yet.");
+        if (this.length() != s.length()) {
+            return false;
+        }
+        for (int i = 0; i < this.length(); i++) {
+            if (this.getChar(i) != s.getChar(i)) {
+                return false;
+            }
+        }
+        return true;
     }
+
+    // Implement reverse function
     public void reverse() {
-        throw new UnsupportedOperationException("reverse() function is not supported yet.");
+        for (int i = 0, j = size; i < j; i++, j--) {
+            char temp = str[i];
+            str[i] = str[j];
+            str[j] = temp;
+        }
     }
 }
